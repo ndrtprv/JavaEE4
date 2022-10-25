@@ -1,55 +1,45 @@
 package org.example;
 
+import java.util.HashMap;
+
 public class Stats {
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intellect;
-    private int wisdom;
-    private int charisma;
+    private HashMap<String, Integer> stats;
+
+    public Stats() {
+        stats = new HashMap<>();
+    }
+
+    public Stats(int str, int dex, int con, int intel, int wis, int charisma) {
+        stats = new HashMap<>();
+        stats.put("Strength", str);
+        stats.put("Dexterity", dex);
+        stats.put("Constitution", con);
+        stats.put("Intellect", intel);
+        stats.put("Wisdom", wis);
+        stats.put("Charisma", charisma);
+    }
 
     public static Stats generate() {
         Stats stats = new Stats();
         Dice dice = new Dice();
-        stats.strength = dice.rollStats();
-        stats.dexterity = dice.rollStats();
-        stats.constitution = dice.rollStats();
-        stats.intellect = dice.rollStats();
-        stats.wisdom = dice.rollStats();
-        stats.charisma = dice.rollStats();
+
+        stats.stats.put("Strength", dice.rollStats());
+        stats.stats.put("Dexterity", dice.rollStats());
+        stats.stats.put("Constitution", dice.rollStats());
+        stats.stats.put("Intellect", dice.rollStats());
+        stats.stats.put("Wisdom", dice.rollStats());
+        stats.stats.put("Charisma", dice.rollStats());
+
         return stats;
     }
 
     public void print() {
-        System.out.println("Strength: " + strength);
-        System.out.println("Dexterity: " + dexterity);
-        System.out.println("Constitution: " + constitution);
-        System.out.println("Intellect: " + intellect);
-        System.out.println("Wisdom: " + wisdom);
-        System.out.println("Charisma: " + charisma);
+        for (String s: stats.keySet()) {
+            System.out.println(s + ": " + stats.get(s));
+        }
     }
 
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getDexterity() {
-        return dexterity;
-    }
-
-    public int getConstitution() {
-        return constitution;
-    }
-
-    public int getIntellect() {
-        return intellect;
-    }
-
-    public int getWisdom() {
-        return wisdom;
-    }
-
-    public int getCharisma() {
-        return charisma;
+    public HashMap<String, Integer> getStats() {
+        return stats;
     }
 }

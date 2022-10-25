@@ -2,18 +2,18 @@ package org.example;
 
 public class Character {
     private String name;
-    private String dndClass;
+    private CharacterRace race;
     private Stats attributes;
 
-    public Character (String name, String dndClass) {
+    public Character (String name, CharacterRace race) {
         this.name = name;
-        this.dndClass = dndClass;
+        this.race = race;
         this.attributes = Stats.generate();
     }
 
     public void printSheet() {
         System.out.println("Name: " + name);
-        System.out.println("DnD class: " + dndClass);
+
         attributes.print();
     }
 
@@ -25,12 +25,12 @@ public class Character {
         return name;
     }
 
-    public void setDndClass(String dndClass) {
-        this.dndClass = dndClass;
+    public void setRace(CharacterRace race) {
+        this.race = race;
     }
 
-    public String getDndClass() {
-        return dndClass;
+    public CharacterRace getRace() {
+        return race;
     }
 
     public void setAttributes() {
@@ -39,5 +39,18 @@ public class Character {
 
     public Stats getAttributes() {
         return attributes;
+    }
+
+    public void addRaceBonuses() {
+        for (String s : attributes.getStats().keySet()) {
+            attributes.getStats().put(s, attributes.getStats().get(s) + race.getBonuses().getStats().get(s));
+        }
+    }
+
+    public void talk() {
+        System.out.print(race.getName() + " saying: ");
+        race.saySMTH();
+
+        race.print();
     }
 }
