@@ -1,6 +1,8 @@
-package org.example;
+package org.example.CharacterCreator.DnDRace;
 
-public class Half_Orc extends CharacterRace{
+import org.example.CharacterCreator.Stats;
+
+public class Half_Orc extends CharacterRace {
 
     public Half_Orc() {
         setName("Half-Orc");

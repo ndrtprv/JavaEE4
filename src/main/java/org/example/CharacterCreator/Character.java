@@ -1,4 +1,6 @@
-package org.example;
+package org.example.CharacterCreator;
+
+import org.example.CharacterCreator.DnDRace.CharacterRace;
 
 public class Character {
     private String name;

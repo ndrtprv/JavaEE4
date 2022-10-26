@@ -1,4 +1,6 @@
-package org.example;
+package org.example.CharacterCreator.DnDRace;
+
+import org.example.CharacterCreator.Stats;
 
 public abstract class CharacterRace {
     private String name;

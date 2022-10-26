@@ -1,6 +1,8 @@
-package org.example;
+package org.example.CharacterCreator.DnDRace;
 
-public class Gnome extends CharacterRace{
+import org.example.CharacterCreator.Stats;
+
+public class Gnome extends CharacterRace {
     public Gnome() {
         setName("Gnome");
         setBonuses(new Stats(0, 1, 0, 2, 0, 0));
