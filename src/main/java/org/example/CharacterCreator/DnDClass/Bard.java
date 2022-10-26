@@ -1,8 +1,8 @@
-package org.example;
+package org.example.CharacterCreator.DnDClass;
 
 import java.util.*;
 
-public class Bard extends CharacterClass{
+public class Bard extends CharacterClass {
     private final List<String> spells;
 
     public Bard() {

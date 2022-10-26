@@ -1,7 +1,6 @@
-package org.example;
+package org.example.CharacterCreator;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class Dice {
     public int roll() {

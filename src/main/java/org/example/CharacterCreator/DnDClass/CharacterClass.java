@@ -1,4 +1,4 @@
-package org.example;
+package org.example.CharacterCreator.DnDClass;
 
 public abstract class CharacterClass {
     private String name;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.CharacterCreator.DnDClass;
 
 public class ClassFactory {
     public CharacterClass getClass(String type) {

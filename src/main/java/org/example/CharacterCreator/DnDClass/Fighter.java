@@ -1,6 +1,6 @@
-package org.example;
+package org.example.CharacterCreator.DnDClass;
 
-public class Fighter extends CharacterClass{
+public class Fighter extends CharacterClass {
     private final String perk;
 
     public Fighter() {
