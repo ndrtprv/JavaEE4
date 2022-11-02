@@ -12,4 +12,9 @@ public class Gnome extends CharacterRace {
     public void saySMTH() {
         System.out.println("Forest");
     }
+
+    /*@Override
+    public void accept() {
+
+    }*/
 }
