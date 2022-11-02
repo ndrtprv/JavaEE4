@@ -1,8 +1,10 @@
 package org.example.CharacterCreator;
 
 import org.example.DataVisitor.DataElement;
+import org.example.DataVisitor.DataElementsVisitor;
 
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Stats implements DataElement {
     private HashMap<String, Integer> stats;
@@ -46,8 +48,7 @@ public class Stats implements DataElement {
     }
 
     @Override
-    public void accept() {
-        System.out.println("Attributes:");
-        print();
+    public TreeMap<Object, Object> accept(DataElementsVisitor elementsVisitor) {
+        return elementsVisitor.visit(this);
     }
 }

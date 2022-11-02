@@ -2,6 +2,9 @@ package org.example.CharacterCreator.DnDRace;
 
 import org.example.CharacterCreator.Stats;
 import org.example.DataVisitor.DataElement;
+import org.example.DataVisitor.DataElementsVisitor;
+
+import java.util.TreeMap;
 
 public abstract class CharacterRace implements DataElement {
     private String name;
@@ -32,9 +35,7 @@ public abstract class CharacterRace implements DataElement {
 
     public abstract void saySMTH();
 
-    public void accept() {
-        System.out.println("Name of race: " + name);
-        System.out.print("Saying: ");
-        saySMTH();
+    public TreeMap<Object, Object> accept(DataElementsVisitor elementsVisitor) {
+        return elementsVisitor.visit(this);
     }
 }

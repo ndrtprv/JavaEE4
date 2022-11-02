@@ -5,41 +5,63 @@ import org.example.CharacterCreator.DnDClass.ClassFactory;
 import org.example.CharacterCreator.DnDRace.GnomeFactory;
 import org.example.CharacterCreator.DnDRace.Half_OrcFactory;
 import org.example.CharacterCreator.DnDRace.RaceAbstractFactory;
+import org.example.DataVisitor.DataElement;
 import org.example.DataVisitor.ElementVisitor;
+import org.json.simple.*;
+
+import java.io.*;
+import java.util.*;
 
 public class VisitorPatternDemo {
     public static void main(String[] args) {
         ElementVisitor elementVisitor = new ElementVisitor();
+
+        JSONObject jsonObject;
 
         ClassFactory classFactory = new ClassFactory();
 
         RaceAbstractFactory raceAbstractFactory1 = new GnomeFactory();
         RaceAbstractFactory raceAbstractFactory2 = new Half_OrcFactory();
 
-        Character character1 = new Character("Zaluzhnyi", classFactory.getClass("Fighter"), raceAbstractFactory1.create());
-        character1.addRaceBonuses();
-        character1.addBonus();
-        character1.printSheet();
-        character1.talk();
-        System.out.println();
+        try {
+            FileWriter fw = new FileWriter("heroes.json");
 
-        Character character2 = new Character("Povoroznyuk", classFactory.getClass("Bard"), raceAbstractFactory2.create());
-        character2.addRaceBonuses();
-        character2.addBonus();
-        character2.printSheet();
-        character2.talk();
-        System.out.println();
+            Character character1 = new Character("Zaluzhnyi", classFactory.getClass("Fighter"), raceAbstractFactory1.create());
+            character1.addRaceBonuses();
+            character1.addBonus();
 
-        System.out.println("Using Visitor:");
-        elementVisitor.visit(character1);
-        elementVisitor.visit(character1.getAttributes());
-        elementVisitor.visit(character1.getDndClass());
-        elementVisitor.visit(character1.getRace());
-        System.out.println();
+            fw.write("[");
+            jsonObject = formObject(character1, elementVisitor);
+            fw.write(jsonObject.toJSONString());
+            fw.write(",");
 
-        elementVisitor.visit(character2);
-        elementVisitor.visit(character2.getAttributes());
-        elementVisitor.visit(character2.getDndClass());
-        elementVisitor.visit(character2.getRace());
+            Character character2 = new Character("Povoroznyuk", classFactory.getClass("Bard"), raceAbstractFactory2.create());
+            character2.addRaceBonuses();
+            character2.addBonus();
+
+            jsonObject = formObject(character2, elementVisitor);
+            fw.write(jsonObject.toJSONString());
+            fw.write("]");
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static JSONObject formObject(Character character, ElementVisitor elementVisitor) {
+        List<DataElement> dataElements = new LinkedList<>();
+
+        dataElements.add(character);
+        dataElements.add(character.getDndClass());
+        dataElements.add(character.getRace());
+        dataElements.add(character.getAttributes());
+
+        JSONObject jsonObject = new JSONObject();
+
+        for (DataElement element: dataElements) {
+            jsonObject.putAll(element.accept(elementVisitor));
+        }
+
+        return jsonObject;
     }
 }

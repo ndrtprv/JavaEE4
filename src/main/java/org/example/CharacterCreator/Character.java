@@ -3,6 +3,9 @@ package org.example.CharacterCreator;
 import org.example.CharacterCreator.DnDClass.CharacterClass;
 import org.example.CharacterCreator.DnDRace.CharacterRace;
 import org.example.DataVisitor.DataElement;
+import org.example.DataVisitor.DataElementsVisitor;
+
+import java.util.TreeMap;
 
 public class Character implements DataElement {
     private String name;
@@ -66,8 +69,8 @@ public class Character implements DataElement {
     }
 
     @Override
-    public void accept() {
-        System.out.println("Character's name: " + name);
+    public TreeMap<Object, Object> accept(DataElementsVisitor elementsVisitor) {
+        return elementsVisitor.visit(this);
     }
 
     public CharacterClass getDndClass() {
