@@ -17,11 +17,4 @@ public class Fighter extends CharacterClass {
     public void printMagika() {
         System.out.println("Perk: " + perk);
     }
-
-    /*@Override
-    public void accept() {
-        System.out.println("Class name: " + getName());
-        System.out.println("Default HP: " + getHP());
-        printMagika();
-    }*/
 }

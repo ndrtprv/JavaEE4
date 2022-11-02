@@ -13,9 +13,4 @@ public class Half_Orc extends CharacterRace {
     public void saySMTH() {
         System.out.println(" ");
     }
-
-    /*@Override
-    public void accept() {
-
-    }*/
 }

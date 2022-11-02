@@ -22,11 +22,4 @@ public class Bard extends CharacterClass {
             System.out.println(s);
         }
     }
-
-    /*@Override
-    public void accept() {
-        System.out.println("Class name: " + getName());
-        System.out.println("Default HP: " + getHP());
-        printMagika();
-    }*/
 }
