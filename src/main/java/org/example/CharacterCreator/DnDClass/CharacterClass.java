@@ -1,6 +1,9 @@
 package org.example.CharacterCreator.DnDClass;
 
 import org.example.DataVisitor.DataElement;
+import org.example.DataVisitor.DataElementsVisitor;
+
+import java.util.TreeMap;
 
 public abstract class CharacterClass implements DataElement {
     private String name;
@@ -28,9 +31,7 @@ public abstract class CharacterClass implements DataElement {
         return "Name of class: " + name + "\nHealth points: " + hp;
     }
 
-    public void accept() {
-        System.out.println("Class name: " + name);
-        System.out.println("Default HP: " + hp);
-        printMagika();
+    public TreeMap<Object, Object> accept(DataElementsVisitor elementsVisitor) {
+        return elementsVisitor.visit(this);
     }
 }

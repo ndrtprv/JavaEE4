@@ -1,5 +1,7 @@
 package org.example.DataVisitor;
 
+import java.util.TreeMap;
+
 public interface DataElement {
-    void accept();
+    TreeMap<Object,Object> accept(DataElementsVisitor elementsVisitor);
 }

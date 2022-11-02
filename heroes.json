@@ -1,0 +1,30 @@
+[
+  {
+    "Attributes": {
+      "Charisma": 13,
+      "Dexterity": 16,
+      "Wisdom": 15,
+      "Intellect": 20,
+      "Health": 12,
+      "Strength": 12,
+      "Constitution": 15
+    },
+    "Class": "Fighter",
+    "Name": "Zaluzhnyi",
+    "Race": "Gnome"
+  },
+  {
+    "Attributes": {
+      "Charisma": 16,
+      "Dexterity": 15,
+      "Wisdom": 14,
+      "Intellect": 16,
+      "Health": 10,
+      "Strength": 14,
+      "Constitution": 15
+    },
+    "Class": "Bard",
+    "Name": "Povoroznyuk",
+    "Race": "Half-Orc"
+  }
+]
