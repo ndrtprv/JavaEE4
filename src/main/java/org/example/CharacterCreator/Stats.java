@@ -1,8 +1,10 @@
 package org.example.CharacterCreator;
 
+import org.example.DataVisitor.DataElement;
+
 import java.util.HashMap;
 
-public class Stats {
+public class Stats implements DataElement {
     private HashMap<String, Integer> stats;
 
     public Stats() {
@@ -41,5 +43,11 @@ public class Stats {
 
     public HashMap<String, Integer> getStats() {
         return stats;
+    }
+
+    @Override
+    public void accept() {
+        System.out.println("Attributes:");
+        print();
     }
 }

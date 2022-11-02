@@ -1,8 +1,9 @@
 package org.example.CharacterCreator.DnDRace;
 
 import org.example.CharacterCreator.Stats;
+import org.example.DataVisitor.DataElement;
 
-public abstract class CharacterRace {
+public abstract class CharacterRace implements DataElement {
     private String name;
     private Stats bonuses;
 
@@ -30,4 +31,10 @@ public abstract class CharacterRace {
     }
 
     public abstract void saySMTH();
+
+    public void accept() {
+        System.out.println("Name of race: " + name);
+        System.out.print("Saying: ");
+        saySMTH();
+    }
 }
